@@ -52,7 +52,7 @@ class SimulationWindow(Thread):
         glfw.set_window_pos(self._window, 340, 140)
         glfw.show_window(self._window)
         glfw.set_window_size_callback(self._window, self.window_size_callback)
-        glfw.set_window_size_limits(self._window, 100, 100, 1000, 1000)
+        glfw.set_window_size_limits(self._window, 500, 500, glfw.DONT_CARE, glfw.DONT_CARE)
         glfw.make_context_current(self._window)
 
         glfw.swap_interval(1)
