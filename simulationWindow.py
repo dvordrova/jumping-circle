@@ -1,6 +1,9 @@
+import math
 from threading import Thread
 
+import numpy as np
 import glfw
+import pyrr
 from OpenGL.GL import glViewport, glClearColor, glClear
 from OpenGL.GL import GL_COLOR_BUFFER_BIT
 
@@ -42,6 +45,8 @@ class SimulationWindow(Thread):
         glClearColor(0, 0.1, 0.2, 1.)
         self._simulation.start()
         while self._simulation.is_alive() and self._is_running and not glfw.window_should_close(self._window):
+            # time = glfw.get_time()
+            # self.camera_view.eye = pyrr.Vector3([50*math.sin(time), 0, 100 + 50*math.cos(time)], dtype=np.float32)
             glfw.swap_buffers(self._window)
             glClear(GL_COLOR_BUFFER_BIT)
             self._simulation.draw()

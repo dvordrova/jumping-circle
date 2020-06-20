@@ -1,8 +1,11 @@
+import random
 import time
 
 from simulationWindow import SimulationWindow
 
 if __name__ == '__main__':
+    random.seed(2020)
+
     simulation_window = SimulationWindow()
     simulation_window.start()
 

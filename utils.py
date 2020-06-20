@@ -1,8 +1,11 @@
+from random import random, shuffle
+
 import numpy as np
 
 from pyrr import Vector3
 
 class Color:
+    """r,g,b values are between 0. and 1."""
     def __init__(self, r, g, b):
         self.r = r
         self.g = g
@@ -14,6 +17,11 @@ class Color:
     @classmethod
     def size(cls):
         return 3
+
+def random_color():
+    values = [random()/2 + 0.5, random() / 2, 0]
+    shuffle(values)
+    return Color(*values)
 
 
 class Point:
@@ -47,6 +55,3 @@ class Point:
     
     def __sub__(self, other):
         return self._vector - other._vector
-
-
-ORIGINAL_POINT = Point()

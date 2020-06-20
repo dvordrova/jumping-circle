@@ -17,13 +17,14 @@ class ProjectionView:
 
 
 class CameraView:
+    def __init__(self):
+        self.eye = pyrr.Vector3([0, 0, 100], dtype=np.float32)
+        self.target = pyrr.Vector3([0, 0, 0], dtype=np.float32)
+        self.up = pyrr.Vector3([0, 1, 0], dtype=np.float32)
+
     @property
     def matrix(self):
-        return pyrr.matrix44.create_look_at(
-            pyrr.Vector3([0, 0, 100], dtype=np.float32),
-            pyrr.Vector3([0, 0, 0], dtype=np.float32),
-            pyrr.Vector3([0, 1, 0], dtype=np.float32)
-        )
+        return pyrr.matrix44.create_look_at(self.eye, self.target, self.up)
 
 
 class ModelView:
