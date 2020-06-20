@@ -57,7 +57,7 @@ class SimulationWindow(Thread):
         if not glfw.init():
             raise Exception("glfw can not be initialized")
         glfw.window_hint(glfw.VISIBLE, glfw.FALSE)
-        self._window = glfw.create_window(self._width, self._height, "Bouncing circle", None, None)
+        self._window = glfw.create_window(self._width, self._height, "Bouncing circle (can spawn more by clicking)", None, None)
         if not self._window:
             glfw.terminate()
             raise Exception("glfw window can not be created")
