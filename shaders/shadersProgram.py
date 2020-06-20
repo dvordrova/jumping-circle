@@ -1,14 +1,13 @@
+import numpy as np
 import pyrr
 from OpenGL.GL import glUseProgram, GL_VERTEX_SHADER, GL_FRAGMENT_SHADER, glUniformMatrix4fv, glGetUniformLocation
 from OpenGL.GL.shaders import compileProgram, compileShader, GL_FALSE
 
-from utils import Point
-
 
 class ShadersProgram:
     def __init__(self, camera_view, projection, vertex_shaders=None, fragment_shaders=None):
-        self._scale = 1.
-        self._position = Point(0., 0.)
+        self._scale = pyrr.Vector3([1, 1, 1], dtype=np.float32)
+        self._position = pyrr.Vector3([0, 0, 0], dtype=np.float32)
         self.camera_view = camera_view
         self.projection = projection
 
@@ -43,8 +42,8 @@ class ShadersProgram:
             glGetUniformLocation(self.program, "model"),
             1,
             GL_FALSE,
-            pyrr.matrix44.create_from_scale(pyrr.Vector3([self._scale, self._scale, self._scale])) @
-            pyrr.matrix44.create_from_translation(pyrr.Vector3([self._position.x, self._position.y, 0]))
+            pyrr.matrix44.create_from_scale(self._scale) @
+            pyrr.matrix44.create_from_translation(self._position)
         )
         glUniformMatrix4fv(
             glGetUniformLocation(self.program, "view"),
