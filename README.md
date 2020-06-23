@@ -16,7 +16,7 @@ Usage of PyOpenGL will be more preferable.
 ### Prerequisites:
 - python
 - `git clone https://github.com/dvordrova/jumping-circle`
-- `pip install -r requirements.txt`
+- virtualenv + `pip install -r requirements.txt` or using pipenv
 - [if glut not working](https://stackoverflow.com/questions/26700719/pyopengl-glutinit-nullfunctionerror)
 
 Run `python3 ./main.py`
